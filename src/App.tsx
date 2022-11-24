@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
 import { Loading } from "./components/Loading";
+import { GuessMe } from "./components/GuessMe";
+import { Quiz } from "./view/Quiz";
+import { Score } from "./components/Score";
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -15,20 +18,29 @@ const App = () => {
   const { color, answers } = data[currentIndex] || {};
 
   // handle correct answers
-  // const handleCorrectAnswers = (answer: string): void => {
-  //   if (answer === color) {
-  //     setScore((c) => c + 1);
-  //   }
+  const handleCorrectAnswers = (answer: string): void => {
+    if (answer === color) {
+      setScore((c) => c + 1);
+    }
 
-  //   setCurrentIndex((c) => c + 1);
-  // };
+    setCurrentIndex((c) => c + 1);
+  };
+
+  console.log(color);
 
   return (
     <div className="App">
-      <h2>Quiz App</h2>
       {!loading ? (
         <>
-          <h5>{}</h5>
+          {data.length > currentIndex ? (
+            <Quiz
+              color={color}
+              answers={answers}
+              handleCorrectAnswers={handleCorrectAnswers}
+            />
+          ) : (
+            <Score score={score} len={data.length} />
+          )}
         </>
       ) : (
         <Loading />
