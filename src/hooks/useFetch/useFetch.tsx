@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Colors } from "./useFetch.types";
 
-export const useFetch = (url: string): [Array<Colors>, boolean] => {
+export const useFetch = (url: string): [Array<Colors>, boolean, () => void] => {
   const [data, setData] = useState<Array<Colors>>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,5 +24,5 @@ export const useFetch = (url: string): [Array<Colors>, boolean] => {
     fetchColors();
   }, [url]);
 
-  return [data, isLoading];
+  return [data, isLoading, fetchColors];
 };

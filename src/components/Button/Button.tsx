@@ -2,7 +2,7 @@ import { SButton } from "./Button.styled";
 
 interface Props {
   children: React.ReactNode;
-  isCorrectAnswer: () => void;
+  isCorrectAnswer?: () => void;
 }
 
 export const Button: React.FC<Props> = ({ children, isCorrectAnswer }) => (
