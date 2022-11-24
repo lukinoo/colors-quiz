@@ -1,3 +1,3 @@
-export const Loading = () => {
-  return <div>Loading...</div>;
-};
+import { Loader } from "./Loading.styled";
+
+export const Loading = () => <Loader></Loader>;
