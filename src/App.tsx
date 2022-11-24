@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
 import { Loading } from "./components/Loading";
 import { Quiz } from "./view/Quiz";
-import { Score } from "./components/Score";
+import { Score } from "./view/Score";
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
