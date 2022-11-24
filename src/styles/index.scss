@@ -1,0 +1,7 @@
+@import "./partials/reset";
+@import "./partials/variables";
+
+body {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  background: $light-black;
+}
