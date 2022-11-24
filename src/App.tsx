@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
+import { Loading } from "./components/Loading";
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -25,7 +26,7 @@ const App = () => {
     <div className="App">
       <h2>Quiz App</h2>
       {loading ? (
-        <div>loading...</div>
+        <Loading />
       ) : (
         <>
           <h5>{5 + 3}</h5>
