@@ -11,26 +11,27 @@ const App = () => {
     import.meta.env.VITE_REACT_APP_API_URL as string
   );
 
-  const { color, answers } = data[currentIndex] || [];
+  // object destructuring
+  const { color, answers } = data[currentIndex] || {};
 
   // handle correct answers
-  const handleCorrectAnswers = (answer: string): void => {
-    if (answer === color) {
-      setScore((c) => c + 1);
-    }
+  // const handleCorrectAnswers = (answer: string): void => {
+  //   if (answer === color) {
+  //     setScore((c) => c + 1);
+  //   }
 
-    setCurrentIndex((c) => c + 1);
-  };
+  //   setCurrentIndex((c) => c + 1);
+  // };
 
   return (
     <div className="App">
       <h2>Quiz App</h2>
-      {loading ? (
-        <Loading />
-      ) : (
+      {!loading ? (
         <>
-          <h5>{5 + 3}</h5>
+          <h5>{}</h5>
         </>
+      ) : (
+        <Loading />
       )}
     </div>
   );
