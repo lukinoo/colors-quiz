@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
 import { Loading } from "./components/Loading";
-import { GuessMe } from "./components/GuessMe";
 import { Quiz } from "./view/Quiz";
 import { Score } from "./components/Score";
 
@@ -10,7 +9,7 @@ const App = () => {
   const [score, setScore] = useState<number>(0);
 
   // fetching colors data with COSTUM HOOK
-  const [data, loading] = useFetch(
+  const [data, loading, fetchColors] = useFetch(
     import.meta.env.VITE_REACT_APP_API_URL as string
   );
 
@@ -26,7 +25,12 @@ const App = () => {
     setCurrentIndex((c) => c + 1);
   };
 
-  console.log(color);
+  // handle reset game
+  const handleResetGame = (): void => {
+    fetchColors();
+    setCurrentIndex(0);
+    setScore(0);
+  };
 
   return (
     <div className="App">
@@ -39,7 +43,13 @@ const App = () => {
               handleCorrectAnswers={handleCorrectAnswers}
             />
           ) : (
-            <Score score={score} len={data.length} />
+            <>
+              <Score
+                resetGame={handleResetGame}
+                score={score}
+                len={data.length}
+              />
+            </>
           )}
         </>
       ) : (
